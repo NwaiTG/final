@@ -34,4 +34,10 @@ public class AstronautController {
         Page<AstronautResponseDto> astronautResponseDtoPage = astronautService.searchAstronautByExpYear(expYears, page, pageSize, sortDirection, sortBy);
         return ResponseEntity.status(HttpStatus.OK).body(astronautResponseDtoPage);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAstronaut(@PathVariable Long id) {
+        astronautService.deleteAstronaut(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 }
